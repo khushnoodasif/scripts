@@ -1,5 +1,5 @@
 # Import CSV file as a hashtable
-$prices = Import-Csv -Path 'prices.csv' -Header 'Device', 'SDCD' -Delimiter ','
+$prices = Import-Csv -Path './prices.csv' -Header 'Device', 'SDCD' -Delimiter ','
 
 # Set contract lengths
 $contract_lengths = @("36", "30", "24", "18", "12")
@@ -22,6 +22,8 @@ while ($true) {
         Write-Host "Invalid input. Please try again."
         continue
     }
+
+    Write-host "Selected device: $($prices.Device[$device_number - 1])"
 
     # Look up the original price for the selected device
     $price = $prices[$device_number - 1].SDCD
